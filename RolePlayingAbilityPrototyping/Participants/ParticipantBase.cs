@@ -11,8 +11,8 @@ namespace RolePlayingAbilityPrototyping.Participants
         public string Name { get; set; }
         public int Level { get; set; }
         public Dictionary<SpellType, double> SpellVector { get; set; }
-        public abstract double Modifier { get; set; }
-        public abstract double NotPresentValue { get; set; }
+        public abstract double Modifier { get; }
+        public abstract double NotPresentValue { get; }
 
         protected ParticipantBase(string name, int level)
         {
@@ -23,7 +23,8 @@ namespace RolePlayingAbilityPrototyping.Participants
 
         public double this[SpellType spellType]
         {
-            get { return SpellVector[spellType] != 0 ? SpellVector[spellType] : NotPresentValue; }
+            get { return SpellVector.ContainsKey(spellType) ? SpellVector[spellType] : NotPresentValue; }
+            set { SpellVector[spellType] = value; }
         }
 
         public IEnumerator<Tuple<SpellType, double>> GetEnumerator()

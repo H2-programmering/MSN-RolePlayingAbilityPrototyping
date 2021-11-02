@@ -6,7 +6,19 @@ namespace RolePlayingAbilityPrototyping
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Arena arena = new Arena();
+
+            arena.Battle();
+
+            wait();
+        }
+
+        private static void wait()
+        {
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Done, press any key to close application");
+            Console.ReadKey();
         }
     }
 }
